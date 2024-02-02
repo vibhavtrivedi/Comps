@@ -15,9 +15,6 @@ function App() {
       <div>
         <Button></Button>
       </div>
-      <div>
-        <Button></Button>
-      </div>
     </div>
   );
 }
