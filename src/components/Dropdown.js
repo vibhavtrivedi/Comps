@@ -23,7 +23,6 @@ function Dropdown({ options, value, onChange }) {
     setIsOpen(!isOpen);
   };
   const handleOptionClick = (option) => {
-    console.log("opt", option);
     setIsOpen(false);
     onChange(option);
   };
