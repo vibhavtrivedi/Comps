@@ -3,11 +3,9 @@ import { createContext, useEffect, useState } from "react";
 
 const NavigationContext = createContext();
 function NavigationProvider({ children }) {
-    console.log('function called');
     const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
     useEffect(() => {
-        console.log('useEffect');
         const handler = () => {
             setCurrentPath(window.location.pathname);
         }
@@ -21,9 +19,7 @@ function NavigationProvider({ children }) {
         setCurrentPath(to);
     }
     return (
-        <NavigationContext.Provider value={{}}>
-            <button onClick={() => navigate('/dropdown')}>Dropdown</button>
-            <button onClick={() => navigate('/accordion')}>Accordion</button>
+        <NavigationContext.Provider value={{currentPath, navigate}}>
             {children}
         </NavigationContext.Provider>
     )
