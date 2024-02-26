@@ -7,12 +7,17 @@ function ModalPage() {
   const handleClick = () => {
     setShowModal(true);
   };
+  const handleClose = () => {
+    setShowModal(false);
+  }
+  const acceptButton = <div><Button onClick={handleClose} primary>Accept</Button></div>
+  const modal = <Modal onClose={handleClose} acceptButton={acceptButton}><p>Here is the Important Agreement that you need to Accept!</p></Modal>
   return (
-    <div>
+    <div className="relative">
       <Button onClick={handleClick} primary>
         Open Modal
       </Button>
-      {showModal && <Modal />}
+      {showModal && modal}
     </div>
   );
 }
