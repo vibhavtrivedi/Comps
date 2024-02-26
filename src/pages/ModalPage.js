@@ -8,7 +8,7 @@ function ModalPage() {
     setShowModal(true);
   };
   return (
-    <div>
+    <div className="relative">
       <Button onClick={handleClick} primary>
         Open Modal
       </Button>
