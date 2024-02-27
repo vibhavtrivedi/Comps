@@ -1,10 +1,15 @@
 import Table from "../components/Table";
 
 function TablePage() {
-  console.log("hello");
+  const data = [
+    { name: "Banana", color: "bg-yellow-500", score: 5 },
+    { name: "Apple", color: "bg-red-500", score: 3 },
+    { name: "Orange", color: "bg-orange-500", score: 2 },
+    { name: "Lime", color: "bg-green-500", score: 1 },
+  ];
   return (
     <div>
-      <Table />
+      <Table data={data} />
     </div>
   );
 }
