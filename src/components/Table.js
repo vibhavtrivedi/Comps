@@ -11,13 +11,13 @@ function Table({ data, config, keyFn }) {
     const renderCells = config.map((column) => {
       return (
         <td className="p-2" key={column.label}>
-          {column.render(rowData)}
+          {column.render(rowData)} 
         </td>
       );
     });
     return (
       <tr key={keyFn(rowData)} className="border-b">
-        {renderCells}
+        {renderCells} 
       </tr>
     );
   });
