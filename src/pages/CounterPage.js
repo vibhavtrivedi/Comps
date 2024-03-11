@@ -1,33 +1,35 @@
-//import { useState } from "react";
 import { useReducer } from "react";
+import { produce } from "immer";
 import Button from "../components/Button";
 import Panel from "../components/Panel";
-//import UseCounter from "../hooks/use-counter";
 const INCREAMENT_COUNT = 'increament';
 const CHANGE_VALUE_TO_ADD = 'change-value-to-add';
+const DECREAMENT_COUNT = 'decreament';
+const ADD_VALUE_TO_COUNT = 'add_value';
 const reducer = (state, action) => {
   switch (action.type) {
     case INCREAMENT_COUNT:
-      return {
-        ...state,
-        count: state.count + 1
-      }
+      state.count = state.count + 1
+      return
+    case DECREAMENT_COUNT:
+      state.count = state.count - 1
+      return 
     case CHANGE_VALUE_TO_ADD:
-      return {
-        ...state,
-        value: action.payload 
-      }
+      state.value = action.payload
+      return
+    case ADD_VALUE_TO_COUNT:
+      state.count = state.count + state.value
+      return
     default:
-      return state
+      return 
   }
 }
 function CounterPage({ initialValue }) {
-  const [state, dispatch] = useReducer(reducer, {count: initialValue, value: 0})
-  //const { count, increament } = UseCounter(initialValue);
-  // const [count, setCount] = useState(initialValue);
-  // const [value, setValue] = useState(0);
+  const [state, dispatch] = useReducer(produce(reducer), {count: initialValue, value: 0})
   const decreament = () => {
-    
+    dispatch({
+      type: DECREAMENT_COUNT 
+    })
   }
 
   const increament = () => {
@@ -43,13 +45,13 @@ function CounterPage({ initialValue }) {
       type: CHANGE_VALUE_TO_ADD,
       payload: vlue1
     })
-    //setValue(vlue1)
   }
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setCount(count + value);
-    // setValue(0);
+    dispatch({
+      type: ADD_VALUE_TO_COUNT
+    })
   }
   return (
     <Panel className="m-3">
